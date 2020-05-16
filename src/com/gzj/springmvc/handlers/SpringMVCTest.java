@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -162,5 +163,31 @@ public class SpringMVCTest {
 		map.put("school", "654321");
 		return "success";
 	}
-
+	
+	
+	/**
+	 * 
+	 * 1、执行ModelAttribute修饰方法 把对象放入map中
+	 * 2、springMVC从map中取出对象，并把表单的 请求参数赋给该对象的对应属性
+	 * 3、springMVC把随想传入目标对象的参数
+	 * 
+	 * 注意在ModelAttribute修饰的方法中放入到map的键需要和目标方法入参的第一个字母小写的字符串一致
+	 * */
+	@RequestMapping("testModelAttribute")
+	public String testModelAttribute(User user)
+	{
+		System.out.println("修改："+user);
+		return "success";
+	}
+	
+	@ModelAttribute  //有ModelAttribute 标记的方法会在执行每个目标方法之前被调用
+	public void getUser(@RequestParam(value="id",required=false) Integer id,Map<String,Object> map)
+	{
+		if(id!=null)
+		{
+			User user= new User(1,"tom","123456","tom@163.com",12);
+			System.out.println("获取对象："+user);
+			map.put("user", user);
+		}		
+	}
 }

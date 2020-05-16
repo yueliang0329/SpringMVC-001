@@ -71,6 +71,21 @@
 	<br>
 	<a href="daohang.jsp">导航</a>
 	<br>
-
+	<!-- 模拟修改操作
+		1、原始数据  1，tom，123456，tom@163.com，12
+		2、密码不能被修改
+		3、表单回显	
+	 -->
+	
+	<form action="springmvc/testModelAttribute" method="post">
+		<input type="hidden" name="id" value="1"/>
+		username:<input type="text" name="username" value="tom"/>
+		<br>
+		email:<input type="text" name="email" value="tom@163.com"/>
+		<br>
+		age:<input type="text" name="age" value="12"/>
+		<br>
+		<input type="submit" value="submit"/>
+	</form>
 </body>
 </html>
