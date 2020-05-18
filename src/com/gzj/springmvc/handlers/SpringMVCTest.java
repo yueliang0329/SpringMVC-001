@@ -183,11 +183,25 @@ public class SpringMVCTest {
 	@ModelAttribute  //有ModelAttribute 标记的方法会在执行每个目标方法之前被调用
 	public void getUser(@RequestParam(value="id",required=false) Integer id,Map<String,Object> map)
 	{
+		System.out.println("modelAttribute method...");
 		if(id!=null)
 		{
 			User user= new User(1,"tom","123456","tom@163.com",12);
 			System.out.println("获取对象："+user);
 			map.put("user", user);
 		}		
+	}
+	
+	@RequestMapping("testView")
+	public String testView()
+	{
+		return "helloView";
+	}
+	
+	@RequestMapping("testRedirect")
+	public String testRedirect()
+	{
+		System.out.println("testRedirect");
+		return "redirect:/index.jsp";
 	}
 }

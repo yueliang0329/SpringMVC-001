@@ -87,5 +87,10 @@
 		<br>
 		<input type="submit" value="submit"/>
 	</form>
+	
+	<br>
+	<a href="springmvc/testView">Test View</a>
+	<br>
+	<a href="springmvc/testRedirect">Test Redirect</a>
 </body>
 </html>
